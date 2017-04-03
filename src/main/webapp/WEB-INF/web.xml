@@ -4,4 +4,19 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+
+  <!-- listeners -->
+  <listener>
+    <listener-class>com.rongle.jsms.BeforeAfterListener</listener-class>
+  </listener>
+
+  <!-- servlets -->
+  <servlet>
+    <servlet-name>sendcode</servlet-name>
+    <servlet-class>com.rongle.jsms.SendCodeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>sendcode</servlet-name>
+    <url-pattern>/servlets/sendcode</url-pattern>
+  </servlet-mapping>
 </web-app>
