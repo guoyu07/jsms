@@ -5,6 +5,29 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
 
+  <!-- sms -->
+  <context-param>
+    <param-name>sms-token</param-name>
+    <param-value>rlkj</param-value>
+  </context-param>
+  <context-param>
+    <param-name>sms-username</param-name>
+    <param-value>rlkj</param-value>
+  </context-param>
+  <context-param>
+    <param-name>sms-password</param-name>
+    <param-value>rlkj123</param-value>
+  </context-param>
+  <context-param>
+    <param-name>sms-epid</param-name>
+    <param-value>121366</param-value>
+  </context-param>
+  <context-param>
+    <param-name>sms-subcode</param-name>
+    <param-value>317</param-value>
+  </context-param>
+
+
   <!-- listeners -->
   <listener>
     <listener-class>com.rongle.jsms.BeforeAfterListener</listener-class>
