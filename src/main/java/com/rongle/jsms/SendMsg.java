@@ -11,9 +11,10 @@ import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 
-public final class SendMsg {
+public class SendMsg {
     private String username;
     private String password;
     private String epid;
@@ -29,22 +30,21 @@ public final class SendMsg {
         this.subcode = subcode;
     }
 
-
     public boolean send(String phone, String msg) {
-        String gbkMsg = null;
+        String url;
 
         // 编码转换
         try {
-            gbkMsg = new String(msg.getBytes("UTF-8"), "GBK");
+            String gbkMsg = URLEncoder.encode(msg, "GBK");
+
+            url = String.format(
+                    fmt, this.username, this.password, phone, gbkMsg, this.epid, this.subcode
+            );
+            System.out.println(url);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
             return false;
         }
-
-        // 构造url
-        String url = String.format(
-                fmt, this.username, this.password, phone, gbkMsg, this.epid, this.subcode
-        );
 
         try (CloseableHttpClient cli = HttpClients.createDefault()) {
             HttpGet req = new HttpGet(url);
